@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
 
-function App() {
+import { RootState } from "./store";
+import InputGeoName from "./components/InputGeoName";
+import ErrorMsg from "./components/ErrorMsg";
+import ResultWeather from "./components/ResultWeather";
+
+const App: FC = () => {
+  const weatherData = useSelector((state: RootState) => state.weather.data);
+  const loading = useSelector((state: RootState) => state.weather.loading);
+  const error = useSelector((state: RootState) => state.weather.error);
+
+  console.log("loading:" + loading);
+  console.log("error:" + error);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="mx-auto">
+      <h1 className="text-white font-mono text-3xl text-center mt-10">
+        天気取得アプリ
+      </h1>
+      <InputGeoName title="今の天気を調べる場所の名前を入力！！" />
+      <div className="container mx-auto">
+        {loading ? (
+          <h2 className="text-white font-mono text-2xl text-center my-5">
+            天気情報取得中...
+          </h2>
+        ) : (
+          weatherData && <ResultWeather data={weatherData} />
+        )}
+        {error && <ErrorMsg />}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
