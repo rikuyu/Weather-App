@@ -1,9 +1,7 @@
 import React, { FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import "./App.css";
-
+import { useSelector } from "react-redux";
 import { RootState } from "./store";
-import InputGeoName from "./components/InputGeoName";
+import InputCityName from "./components/InputCityName";
 import ErrorMsg from "./components/ErrorMsg";
 import ResultWeather from "./components/ResultWeather";
 
@@ -20,7 +18,7 @@ const App: FC = () => {
       <h1 className="text-white font-mono text-3xl text-center mt-10">
         天気取得アプリ
       </h1>
-      <InputGeoName title="今の天気を調べる場所の名前を入力！！" />
+      <InputCityName title="今の天気を調べる場所の名前を入力" />
       <div className="container mx-auto">
         {loading ? (
           <h2 className="text-white font-mono text-2xl text-center my-5">

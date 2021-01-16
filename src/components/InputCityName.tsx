@@ -8,7 +8,7 @@ interface SearchProps {
   title: string;
 }
 
-const InputGeoName: FC<SearchProps> = ({ title }) => {
+const InputCityName: FC<SearchProps> = ({ title }) => {
   const dispatch = useDispatch();
   const [cityName, setCityName] = useState("");
 
@@ -36,8 +36,8 @@ const InputGeoName: FC<SearchProps> = ({ title }) => {
       <form onSubmit={submitHandler} className="flex justify-center">
         <input
           type="text"
-          placeholder="場所名をローマ字で入力"
-          className="mt-1 w-5/12 p-3 focus:outline-none focus:ring focus:border-blue-300 rounded-xl"
+          placeholder="場所名をローマ字で入力 (Ex. tokyo)"
+          className="mt-1 w-8/12 p-3 focus:outline-none focus:ring focus:border-blue-300 rounded-xl"
           value={cityName}
           onChange={changeHandler}
         />
@@ -49,4 +49,4 @@ const InputGeoName: FC<SearchProps> = ({ title }) => {
   );
 };
 
-export default InputGeoName;
+export default InputCityName;
