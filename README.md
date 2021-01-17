@@ -1,4 +1,4 @@
-# Portfolio
+# Weather-App
 
 現在の天気を取得することができるアプリです。Redux Thunkがどんなものか勉強するために作成しました。
 
